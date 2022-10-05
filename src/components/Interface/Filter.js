@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Filter() {
   return (
-    <div class="float-md-right">
+    <div className="float-md-right">
       <select name="cars">
       <option value="" disabled selected>Filter by Region</option>
         <option value="volvo">Africa</option>

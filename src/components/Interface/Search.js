@@ -5,7 +5,6 @@ export default function Search() {
     <>
         <input
           type="text"
-          class=""
           placeholder="Search for a country..."
         />
     </>
