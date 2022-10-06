@@ -10,7 +10,7 @@ export default function Filter(props) {
 
   return (
     <div className="float-md-right"> 
-      <select onChange={filterCountry}> 
+      <select onChange={filterCountry} > 
         <option disabled selected>
           Filter by Region
         </option>
