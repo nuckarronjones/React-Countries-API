@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./filter.module.css"
 
 export default function Filter(props) {
 
@@ -10,13 +11,13 @@ export default function Filter(props) {
 
   return (
     <div className="float-md-right"> 
-      <select onChange={filterCountry} > 
+      <select onChange={filterCountry} className={`${style.selector} ${props.darkMode? style['selector-dark']: style['selector-light']}`}> 
         <option disabled selected>
           Filter by Region
         </option>
         <option value="Africa">Africa</option> 
         <option value="Asia">Asia</option> 
-        <option value="America">America</option> 
+        <option value="Americas">America</option> 
         <option value="Europe">Europe</option> 
         <option value="Oceania">Oceania</option> 
       </select> 

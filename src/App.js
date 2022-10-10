@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav/Nav";
 import Interface from "./components/Interface/Interface";
+import styles from "./global.module.css"
 
 export default function App() {
   const [countries, setCountries] = useState();
+  const [darkMode,setDarkMode] = useState(false)
 
   //function to get countries data from API
   const getCountries = async () => {
@@ -18,10 +20,14 @@ export default function App() {
     getCountries();
   }, []);
 
+  const toggleDarkMode = () =>{
+    return (darkMode ? setDarkMode(false) : setDarkMode(true))
+  }
+
   return (
     <>
-      <Nav />
-      <Interface countries={countries} />
+      <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+      <Interface  darkMode={darkMode} countries={countries} />
     </>
   );
 }
