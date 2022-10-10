@@ -1,4 +1,8 @@
+.card-light{
+    box-shadow: 0px 0px 10px hsl(0, 0%, 85%);
+}
 .card-dark-mode{
     background-color: hsl(209, 23%, 22%);
     color: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 10px  hsl(207, 26%, 17%);
 }

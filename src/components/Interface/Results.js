@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import Card from "./Card";
 
 export default function Results(props) {
-
   return (
     <>
-    <div className="container">
-      <div className="row mt-5">
-        {props.countries &&
-          props.countries.map((country, index) => (
-            <div className="col-3 mb-4" key={country.name.common}>
-              <Card
-                darkMode={props.darkMode}
-                name={country.name.common}
-                flag={country.flags.png}
-                population={country.population}
-                region={country.region}
-                capital={country.capital}
-              />
-            </div>
-          ))}
-      </div>
+      <div className="container">
+        <div className="row mt-5">
+          {props.countries &&
+            props.countries.map((country, index) => (
+              <div className="col-3 mb-4" key={country.name.common}>
+                <Card
+                  darkMode={props.darkMode}
+                  name={country.name.common}
+                  flag={country.flags.png}
+                  population={country.population}
+                  region={country.region}
+                  capital={country.capital}
+                />
+              </div>
+            ))}
+        </div>
       </div>
     </>
   );
