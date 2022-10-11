@@ -14,7 +14,7 @@ export default function Nav(props) {
             <b>Where in the world?</b>
           </span>
           <button onClick={props.toggleDarkMode}>
-            <i class="bi bi-moon"></i> Dark Mode
+            <i className="bi bi-moon"></i> Dark Mode
           </button>
         </div>
       </nav>
