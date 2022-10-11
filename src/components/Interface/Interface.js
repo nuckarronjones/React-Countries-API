@@ -18,8 +18,11 @@ export default function Interface(props) {
   };
 
   const filteredTextHandler = (text) => {
-    let filter = props.countries.filter(country => console.log(/^A/.test(country.name.common)))
-    console.log(text);
+    let regex = new RegExp(`${text}`, "i")
+    let filter = props.countries.filter(country => regex.test(country.name.common))
+    setFilteredCountryList(filter)
+    console.log(filter)
+    console.log(text)
   };
 
   return (
