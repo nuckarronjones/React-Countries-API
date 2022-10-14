@@ -13,7 +13,7 @@ export default function App() {
       (response) => response.json()
     );
 
-    setCountries(response);
+    setCountries(response.sort((a, b) => a.name.common.localeCompare(b.name.common)));
   };
 
   useEffect(() => {
