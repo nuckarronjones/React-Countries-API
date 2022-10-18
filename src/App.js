@@ -25,9 +25,9 @@ export default function App() {
   }
 
   return (
-    <>
+    <div>
       <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
       <Interface  darkMode={darkMode} countries={countries} />
-    </>
+    </div>
   );
 }
