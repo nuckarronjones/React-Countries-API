@@ -3,6 +3,7 @@ import style from "./card.module.css"
 
 export default function Card(props) {
   return (
+    <a href="/CountryResult">
     <div className={`${props.darkMode ? style[`card-dark-mode`] : style[`card-light`]} card h-100 w-100`} >
        <img className="card-img-top" src={props.flag} alt="Card image cap" />
         <div className="card-body">
@@ -12,5 +13,6 @@ export default function Card(props) {
           <div><b>Capital: </b>{props.capital}</div>
         </div>
     </div>
+    </a>
   );
 }

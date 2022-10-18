@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Nav from "./components/Nav/Nav";
 import Interface from "./components/Interface/Interface";
+import Nav from "./components/Nav/Nav"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import CountryResult from "./components/countryResult/CountryResult";
+import "./global.css"
 
 export default function App() {
   const [countries, setCountries] = useState();
-  const [darkMode,setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
 
   //function to get countries data from API
   const getCountries = async () => {
@@ -12,21 +15,36 @@ export default function App() {
       (response) => response.json()
     );
 
-    setCountries(response.sort((a, b) => a.name.common.localeCompare(b.name.common)));
+    setCountries(
+      response.sort((a, b) => a.name.common.localeCompare(b.name.common))
+    );
   };
+
 
   useEffect(() => {
     getCountries();
   }, []);
 
-  const toggleDarkMode = () =>{
-    return (darkMode ? setDarkMode(false) : setDarkMode(true))
-  }
+  const toggleDarkMode = () => {
+    return darkMode ? setDarkMode(false) : setDarkMode(true);
+  };
 
   return (
-    <div>
+    <>
+      {/* <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
+      {/* <Interface darkMode={darkMode} countries={countries} /> */}
+
       <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
-      <Interface  darkMode={darkMode} countries={countries} />
-    </div>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Interface darkMode={darkMode} countries={countries} />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/CountryResult" element={<CountryResult />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }

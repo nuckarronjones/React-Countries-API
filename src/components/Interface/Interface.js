@@ -39,8 +39,9 @@ export default function Interface(props) {
   };
 
   return (
-    <div className={`${props.darkMode && style["bg-dark-theme"]} ${style['min-height']} pt-5 `}>
-      <div className="container">
+    <div className={`${props.darkMode && style["bg-dark-theme"]} ${style['min-height']}`}>
+
+      <div className="container pt-5">
         <Search
           filteredTextHandler={filteredTextHandler}
           darkMode={props.darkMode}
