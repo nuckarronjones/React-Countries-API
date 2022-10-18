@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav/Nav";
 import Interface from "./components/Interface/Interface";
-import styles from "./global.module.css"
 
 export default function App() {
   const [countries, setCountries] = useState();

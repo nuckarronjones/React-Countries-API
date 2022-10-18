@@ -15,7 +15,7 @@ export default function Interface(props) {
 
   const regionChangeHandler = (selectedRegion) => {
     let filter = props.countries.filter(
-      (country) => country.region == selectedRegion
+      (country) => country.region === selectedRegion
     );
     setFilteredCountryList(filter);
     setRegionFilter(selectedRegion);
@@ -26,9 +26,9 @@ export default function Interface(props) {
 
     let filter;
 
-    if (regionFilter != "") {
+    if (regionFilter !== "") {
       filter = props.countries
-        .filter((country) => country.region == regionFilter)
+        .filter((country) => country.region === regionFilter)
         .filter((country) => regex.test(country.name.common));
     } else {
       filter = props.countries.filter((country) =>
@@ -39,7 +39,7 @@ export default function Interface(props) {
   };
 
   return (
-    <div className={`${props.darkMode && style["bg-dark-theme"]} pt-5`}>
+    <div className={`${props.darkMode && style["bg-dark-theme"]} ${style['min-height']} pt-5 `}>
       <div className="container">
         <Search
           filteredTextHandler={filteredTextHandler}
