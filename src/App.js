@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Interface from "./components/Interface/Interface";
-import Nav from "./components/Nav/Nav"
+import Nav from "./components/Nav/Nav";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import CountryResult from "./components/countryResult/CountryResult";
-import "./global.css"
+import CountryResult from "./components/CountryResult/CountryResult";
+import "./global.css";
 
 export default function App() {
   const [countries, setCountries] = useState();
@@ -20,7 +20,6 @@ export default function App() {
     );
   };
 
-
   useEffect(() => {
     getCountries();
   }, []);
@@ -29,20 +28,25 @@ export default function App() {
     return darkMode ? setDarkMode(false) : setDarkMode(true);
   };
 
+  console.log(countries);
+
   return (
     <>
-      {/* <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
-      {/* <Interface darkMode={darkMode} countries={countries} /> */}
-
-      <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+      <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Interface darkMode={darkMode} countries={countries} />} />
+          <Route
+            path="/"
+            element={<Interface darkMode={darkMode} countries={countries} />}
+          />
         </Routes>
 
         <Routes>
-          <Route path="/CountryResult" element={<CountryResult />} />
+          <Route
+            path="/CountryResult/:id"
+            element={<CountryResult darkMode={darkMode} countries={countries}/>}
+          />
         </Routes>
       </BrowserRouter>
     </>

@@ -10,6 +10,7 @@ export default function Results(props) {
             props.countries.map((country, index) => (
               <div className="col-3 mb-4" key={country.name.common}>
                 <Card
+                  countryID={country.cca2}
                   darkMode={props.darkMode}
                   name={country.name.common}
                   flag={country.flags.png}
