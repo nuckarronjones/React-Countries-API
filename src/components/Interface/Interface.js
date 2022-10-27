@@ -10,7 +10,6 @@ export default function Interface(props) {
 
   useEffect(() => {
     setFilteredCountryList(props.countries);
-    console.log("DEBUG: Re-Rendered");
   }, [props.countries]); //waits on props.countries to update and then re-renders app with new filteredcountrylist. Only runs once
 
   const regionChangeHandler = (selectedRegion) => {

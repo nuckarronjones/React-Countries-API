@@ -6,7 +6,7 @@ import "../../global.css";
 export default function Card(props) {
   return (
     <>
-      <Link to={`/CountryResult/${props.countryID}`}>
+      <Link to={`/CountryResult/${props.countryID}`} state={{ from: "card" }}>
         <div
           className={`${
             props.darkMode ? style[`card-dark-mode`] : style[`card-light`]

@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation, Outlet } from "react-router-dom";
 import style from "./countryresult.module.css";
 import "../../global.css";
 
 export default function CountryResult(props) {
-  const [params] = useState(useParams().id);
+  let navigate = useNavigate()
+  const location = useLocation();
+  
+
+  const {id} = useParams();
+  const [thisId,setThisId] = useState()
   const [country] = useState(
-    props.countries.filter((country) => country.cca2 === params)
+    props.countries.filter((country) => country.cca2 === id)
   )[0];
+
+  
 
   return (
     <div
@@ -16,11 +23,11 @@ export default function CountryResult(props) {
       }`}
     >
       <div className="container">
-        <Link to="/">
-          <button className="btn btn-dark mt-5 mb-5">
+
+          <button onClick={()=> navigate(-1)} className="btn btn-dark mt-5 mb-5">
             <i class="bi bi-arrow-left"></i> Back{" "}
           </button>
-        </Link>
+
         <div className="row">
           <div className="col-6">
             <div
@@ -84,9 +91,9 @@ export default function CountryResult(props) {
                     <b>Border Countries: </b>
                     {country.borders &&
                       country.borders.map((border) => (
-                        // <Link to={`/CountryResult/AF/*`}>
+                        <Link to={`/CountryResult/AL`} state={{ from: "country result" }}>
                         <button className="btn btn-dark">{border}</button>
-                        // </Link>
+                        </Link>
                       ))}
                   </p>
                 </div>
