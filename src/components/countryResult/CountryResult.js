@@ -1,42 +1,100 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import style from "./countryresult.module.css";
+import "../../global.css";
 
 export default function CountryResult(props) {
   const [params] = useState(useParams().id);
   const [country] = useState(
     props.countries.filter((country) => country.cca2 === params)
-  );
-
-  console.log(country[0]);
+  )[0];
 
   return (
-    <>
+    <div
+      className={`${props.darkMode && style["bg-dark-theme"]} ${
+        style["min-height"]
+      }`}
+    >
       <div className="container">
         <Link to="/">
-          <button className="btn btn-dark">Back</button>
+          <button className="btn btn-dark mt-5 mb-5">
+            <i class="bi bi-arrow-left"></i> Back{" "}
+          </button>
         </Link>
         <div className="row">
           <div className="col-6">
-            <img className="w-100 h-100" src={country[0].flags.png} />
+            <div
+              className={style.countryResultImage}
+              style={{ ["background-image"]: `url(${country.flags.svg}) ` }}
+            ></div>
           </div>
-          <div className="col-6">
-            <div className="row">
-              <div className="col-6">
-                <p>Native Name: {country[0].name.common}</p>
-                <p>Population: {country[0].population}</p>
-                <p>Region: {country[0].region}</p>
-                <p>Sub Region: {country[0].subregion}</p>
-                <p>Capital: {country[0].capital}</p>
+
+          <div className="col-6 d-flex align-items-center justify-content-end">
+            <div>
+              <div className="row mb-3">
+                <div className="col-12">
+                  <h1>{country.name.common}</h1>
+                </div>
               </div>
-              <div className="col-6">
-                <p>Top Level Domain: {country[0].tld}</p>
-                <p>Currencies:</p>
-                <p>Languages:</p>
+              <div className="row">
+                <div className="col-6">
+                  <ul className="undecorated-ul ">
+                    <li>
+                      <b>Native Name:</b> {country.name.common}{}
+                    </li>
+                    <li>
+                      <b>Population:</b> {country.population.toLocaleString('en')  }
+                    </li>
+                    <li>
+                      <b>Region:</b> {country.region}
+                    </li>
+                    <li>
+                      <b>Sub Region:</b> {country.subregion}
+                    </li>
+                    <li>
+                      <b>Capital:</b> {country.capital}
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-6">
+                  <ul className="undecorated-ul">
+                    <li>
+                      <b>Top Level Domain: </b> {country.tld}
+                    </li>
+                    <li>
+                      <b>Currencies: </b>
+                      {country.currencies &&
+                        Object.values(country.currencies)
+                          .map((currency) => currency.name)
+                          .join(", ")}
+                    </li>
+                    <li>
+                      <b>Languages: </b>
+                      {country.languages &&
+                        Object.values(Object.values(country.languages)).join(
+                          ", "
+                        )}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="row mt-4">
+                <div className="col-12">
+                  <p>
+                    <b>Border Countries: </b>
+                    {country.borders &&
+                      country.borders.map((border) => (
+                        // <Link to={`/CountryResult/AF/*`}>
+                        <button className="btn btn-dark">{border}</button>
+                        // </Link>
+                      ))}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

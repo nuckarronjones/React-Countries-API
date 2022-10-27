@@ -1,0 +1,19 @@
+.min-height{
+    min-height:100vh;
+}
+
+.bg-dark-theme{
+    background-color:hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%);
+}
+
+.countryResultImage{
+    height:100%;
+    width:100%;
+    max-width:540px;
+    /* max-height:348px; */
+    min-height:400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}

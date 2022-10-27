@@ -16,3 +16,16 @@ a:hover{
     cursor:pointer;
 }
 
+.undecorated-ul li{
+    list-style: none;
+    margin-bottom:7px;
+}
+
+.card-img-top{
+    height:150px !important;
+    width:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover !important;
+}
+

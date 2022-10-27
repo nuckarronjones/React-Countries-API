@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./nav.module.css";
+import "../../global.css";
 
 export default function Nav(props) {
   return (

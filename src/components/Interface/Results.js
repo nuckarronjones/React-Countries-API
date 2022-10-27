@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import "../../global.css";
 
 export default function Results(props) {
   return (
@@ -13,7 +14,7 @@ export default function Results(props) {
                   countryID={country.cca2}
                   darkMode={props.darkMode}
                   name={country.name.common}
-                  flag={country.flags.png}
+                  flag={country.flags.svg}
                   population={country.population}
                   region={country.region}
                   capital={country.capital}
