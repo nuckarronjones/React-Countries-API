@@ -3,6 +3,7 @@ import Filter from "./Filter";
 import Search from "./Search";
 import Results from "./Results";
 import style from "./interface.module.css";
+import "../../global.css";
 
 export default function Interface(props) {
   const [filteredCountryList, setFilteredCountryList] = useState("");

@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./search.module.css";
+import "../../global.css";
 
 export default function Search(props) {
 
