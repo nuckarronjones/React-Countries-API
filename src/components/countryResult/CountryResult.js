@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import style from "./countryresult.module.css";
 import "../../global.css";
 
 export default function CountryResult(props) {
   const [countryCode] = useState(useParams().id);
+  let navigate = useNavigate()
   const [country, setCountryResult] = useState()
   const [isLoading, setLoading] = useState(true);
 
@@ -100,9 +101,10 @@ export default function CountryResult(props) {
                     <b>Border Countries: </b>
                     {country.borders &&
                       country.borders.map((border) => (
-                        <Link to={`/CountryResult/AF/`}>
-                        <button className="btn btn-dark">{border}</button>
-                        </Link>
+                        <button className="btn btn-dark"  onClick={()=>{
+                          navigate("/CountryResult/AL")
+                          navigate(0)
+                      }}>{border}</button>
                       ))}
                   </p>
                 </div>
