@@ -43,6 +43,7 @@ export default function App() {
         </Routes>
 
         <Routes>
+          
           <Route
             path="/CountryResult/:id"
             element={<CountryResult darkMode={darkMode} countries={countries}/>}

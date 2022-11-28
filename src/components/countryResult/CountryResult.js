@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import style from "./countryresult.module.css";
 import "../../global.css";
 
 export default function CountryResult(props) {
-  const [params] = useState(useParams().id);
-  const [country] = useState(
-    props.countries.filter((country) => country.cca2 === params)
-  )[0];
+  const [countryCode] = useState(useParams().id);
+  const [country, setCountryResult] = useState()
+  const [isLoading, setLoading] = useState(true);
+
+   const getCountries = async () => {
+    const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`).then(
+      (response) => response.json()
+    );
+
+    setCountryResult(response[0])
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getCountries();
+  }, []);
+
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
+  }
 
   return (
     <div
@@ -84,9 +100,9 @@ export default function CountryResult(props) {
                     <b>Border Countries: </b>
                     {country.borders &&
                       country.borders.map((border) => (
-                        // <Link to={`/CountryResult/AF/*`}>
+                        <Link to={`/CountryResult/AF/`}>
                         <button className="btn btn-dark">{border}</button>
-                        // </Link>
+                        </Link>
                       ))}
                   </p>
                 </div>
