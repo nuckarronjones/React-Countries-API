@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import style from "./countryresult.module.css";
 import "../../global.css";
 
 export default function CountryResult(props) {
   //set country initially to the current ID from the main countries page
   const [countryCode, setCountryCode] = useState(useParams().id);
-  let navigate = useNavigate();
   const [country, setCountryResult] = useState();
   const [isLoading, setLoading] = useState(true);
 
@@ -18,6 +17,8 @@ export default function CountryResult(props) {
 
     setCountryResult(response[0]);
     setLoading(false);
+
+    console.log(country);
   };
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function CountryResult(props) {
   }
 
   return (
+
     <div
       className={`${props.darkMode && style["bg-dark-theme"]} ${
         style["min-height"]
@@ -36,19 +38,22 @@ export default function CountryResult(props) {
     >
       <div className="container">
         <Link to="/">
-          <button className="btn btn-dark mt-5 mb-5">
+          <button
+            className={`${props.darkMode && style["dark-btn"]}
+                            } p-1 pl-4 pr-4 ml-2 rounded shadow-sm mt-5 mb-5`}
+          >
             <i class="bi bi-arrow-left"></i> Back{" "}
           </button>
         </Link>
         <div className="row">
-          <div className="col-6">
+          <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
             <div
               className={style.countryResultImage}
               style={{ ["background-image"]: `url(${country.flags.svg}) ` }}
             ></div>
           </div>
 
-          <div className="col-6 d-flex align-items-center justify-content-end">
+          <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
             <div>
               <div className="row mb-3">
                 <div className="col-12">
@@ -103,25 +108,28 @@ export default function CountryResult(props) {
                 <div className="col-12">
                   <p>
                     <b>Border Countries: </b>
-                    {country.borders &&
-                      country.borders.map((border) => (
-                        <Link
-                          to={`/CountryResult/${border}`}
-                          state={{
-                            dark: props.darkMode,
-                          }}
-                        >
-                          {/* When you click a country, the countryID is set to the border -> useEffect listens -> sends api request -> re-renders component */}
-                          <button
-                            className="btn btn-dark"
-                            onClick={() => {
-                              setCountryCode(border);
+                    <div className="row mt-2">
+                      {country.borders &&
+                        country.borders.map((border) => (
+                          <Link
+                            to={`/CountryResult/${border}`}
+                            state={{
+                              dark: props.darkMode,
                             }}
                           >
-                            {border}
-                          </button>
-                        </Link>
-                      ))}
+                            {/* When you click a country, the countryID is set to the border -> useEffect listens -> sends api request -> re-renders component */}
+                            <div
+                              className={`${props.darkMode && style["dark-btn"]}
+                            } col-1 d-inline p-1 pl-3 pr-3 ml-2 rounded shadow-sm`}
+                              onClick={() => {
+                                setCountryCode(border);
+                              }}
+                            >
+                              {border}
+                            </div>
+                          </Link>
+                        ))}
+                    </div>
                   </p>
                 </div>
               </div>

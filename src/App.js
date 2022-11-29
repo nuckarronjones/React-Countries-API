@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Interface from "./components/Interface/Interface";
 import Nav from "./components/Nav/Nav";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CountryResult from "./components/countryResult/CountryResult";
 import "./global.css";
 

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./card.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../global.css";
 
 export default function Card(props) {
