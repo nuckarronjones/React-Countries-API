@@ -29,3 +29,8 @@ a:hover{
     background-size:cover !important;
 }
 
+@media (max-width:481px)  {
+    body{
+        font-size: .9em !important;
+    }
+}

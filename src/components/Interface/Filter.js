@@ -10,7 +10,7 @@ export default function Filter(props) {
   }
 
   return (
-    <div className="float-md-right">
+    <div className="float-md-right mt-4 mt-md-0">
       <select
         onChange={filterCountry}
         className={`${style.selector} ${

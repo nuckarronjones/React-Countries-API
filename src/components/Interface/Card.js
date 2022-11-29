@@ -13,9 +13,9 @@ export default function Card(props) {
         }}
       >
         <div
-          className={`${
+          className={`${style.countryCard} ${
             props.darkMode ? style[`card-dark-mode`] : style[`card-light`]
-          } card h-100 w-100`}
+          }`}
         >
           <div
             className="card-img-top"
