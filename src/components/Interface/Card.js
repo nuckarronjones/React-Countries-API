@@ -6,7 +6,12 @@ import "../../global.css";
 export default function Card(props) {
   return (
     <>
-      <Link to={`/CountryResult/${props.countryID}`}>
+      <Link
+        to={`/CountryResult/${props.countryID}`}
+        state={{
+          darkMode: props.darkMode,
+        }}
+      >
         <div
           className={`${
             props.darkMode ? style[`card-dark-mode`] : style[`card-light`]
@@ -20,7 +25,7 @@ export default function Card(props) {
             <h5 className="card-title">{props.name}</h5>
             <div>
               <b>Population: </b>
-              {props.population.toLocaleString('en')  }
+              {props.population.toLocaleString("en")}
             </div>
             <div>
               <b>Region: </b>

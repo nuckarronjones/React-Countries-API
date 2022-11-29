@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import style from "./countryresult.module.css";
 import "../../global.css";
 
 export default function CountryResult(props) {
-  const [countryCode] = useState(useParams().id);
-  let navigate = useNavigate()
-  const [country, setCountryResult] = useState()
+  //set country initially to the current ID from the main countries page
+  const [countryCode, setCountryCode] = useState(useParams().id);
+  let navigate = useNavigate();
+  const [country, setCountryResult] = useState();
   const [isLoading, setLoading] = useState(true);
 
-   const getCountries = async () => {
-    const response = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`).then(
-      (response) => response.json()
-    );
+  const getCountries = async () => {
+    setCountryCode(countryCode); //set the NEW country code to the value changed from the border country buttons
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode}`
+    ).then((response) => response.json());
 
-    setCountryResult(response[0])
+    setCountryResult(response[0]);
     setLoading(false);
   };
 
   useEffect(() => {
     getCountries();
-  }, []);
+  }, [countryCode]);
 
   if (isLoading) {
     return <div className="App">Loading...</div>;
@@ -57,10 +59,12 @@ export default function CountryResult(props) {
                 <div className="col-6">
                   <ul className="undecorated-ul ">
                     <li>
-                      <b>Native Name:</b> {country.name.common}{}
+                      <b>Native Name:</b> {country.name.common}
+                      {}
                     </li>
                     <li>
-                      <b>Population:</b> {country.population.toLocaleString('en')  }
+                      <b>Population:</b>{" "}
+                      {country.population.toLocaleString("en")}
                     </li>
                     <li>
                       <b>Region:</b> {country.region}
@@ -101,10 +105,22 @@ export default function CountryResult(props) {
                     <b>Border Countries: </b>
                     {country.borders &&
                       country.borders.map((border) => (
-                        <button className="btn btn-dark"  onClick={()=>{
-                          navigate("/CountryResult/AL")
-                          navigate(0)
-                      }}>{border}</button>
+                        <Link
+                          to={`/CountryResult/${border}`}
+                          state={{
+                            dark: props.darkMode,
+                          }}
+                        >
+                          {/* When you click a country, the countryID is set to the border -> useEffect listens -> sends api request -> re-renders component */}
+                          <button
+                            className="btn btn-dark"
+                            onClick={() => {
+                              setCountryCode(border);
+                            }}
+                          >
+                            {border}
+                          </button>
+                        </Link>
                       ))}
                   </p>
                 </div>

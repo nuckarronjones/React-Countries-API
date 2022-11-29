@@ -28,28 +28,20 @@ export default function App() {
     return darkMode ? setDarkMode(false) : setDarkMode(true);
   };
 
-  console.log(countries);
-
   return (
     <>
       <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Interface darkMode={darkMode} countries={countries} />}
-          />
-        </Routes>
-
-        <Routes>
-          
-          <Route
-            path="/CountryResult/:id"
-            element={<CountryResult darkMode={darkMode} countries={countries}/>}
-          />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Interface darkMode={darkMode} countries={countries} />}
+        />
+        <Route
+          path={`/CountryResult/:id`}
+          element={<CountryResult darkMode={darkMode} />}
+        />
+      </Routes>
     </>
   );
 }
