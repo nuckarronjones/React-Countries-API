@@ -6,6 +6,7 @@
     background-color:hsl(207, 26%, 17%);
     color: hsl(0, 0%, 100%);
 }
+
 .dark-btn{
     background-color:hsl(209, 23%, 22%) !important;
     color: hsl(0, 0%, 100%);
@@ -21,6 +22,19 @@
     background-repeat: no-repeat;
     background-size:cover;
 }
+
+@media (max-width:425px)  { 
+    .countryResultImage{
+        height:100%;
+        width:100%;
+        max-width:540px;
+        /* max-height:348px; */
+        min-height:200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+ }
 
 /* - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
 - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)

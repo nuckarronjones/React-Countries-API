@@ -21,6 +21,7 @@ export default function CountryResult(props) {
     console.log(country);
   };
 
+  //when the country code changes, the component re renders for the same URL
   useEffect(() => {
     getCountries();
   }, [countryCode]);
@@ -30,7 +31,6 @@ export default function CountryResult(props) {
   }
 
   return (
-
     <div
       className={`${props.darkMode && style["bg-dark-theme"]} ${
         style["min-height"]
@@ -45,23 +45,26 @@ export default function CountryResult(props) {
             <i class="bi bi-arrow-left"></i> Back{" "}
           </button>
         </Link>
+
         <div className="row">
-          <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
+          <section className="col-12 col-md-6 d-flex align-items-center justify-content-center">
             <div
               className={style.countryResultImage}
               style={{ ["background-image"]: `url(${country.flags.svg}) ` }}
             ></div>
-          </div>
+          </section>
 
-          <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
+          <section className="col-12 col-md-6 d-flex align-items-center justify-content-end">
             <div>
               <div className="row mb-3">
                 <div className="col-12">
                   <h1>{country.name.common}</h1>
                 </div>
               </div>
+
               <div className="row">
-                <div className="col-6">
+
+                <aside className="col-6">
                   <ul className="undecorated-ul ">
                     <li>
                       <b>Native Name:</b> {country.name.common}
@@ -81,8 +84,10 @@ export default function CountryResult(props) {
                       <b>Capital:</b> {country.capital}
                     </li>
                   </ul>
-                </div>
+                </aside>
+                
                 <div className="col-6">
+
                   <ul className="undecorated-ul">
                     <li>
                       <b>Top Level Domain: </b> {country.tld}
@@ -102,8 +107,11 @@ export default function CountryResult(props) {
                         )}
                     </li>
                   </ul>
+
+
                 </div>
               </div>
+
               <div className="row mt-4">
                 <div className="col-12">
                   <p>
@@ -132,9 +140,10 @@ export default function CountryResult(props) {
                     </div>
                   </p>
                 </div>
+                
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>

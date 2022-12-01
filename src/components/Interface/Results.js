@@ -9,7 +9,7 @@ export default function Results(props) {
         <div className="row mt-5">
           {props.countries &&
             props.countries.map((country, index) => (
-              <div className="col-12 col-md-3 col-sm-6 mb-4" key={country.name.common}>
+              <div className="col-12 col-md-3 col-sm-6 col-md-4 col-lg-3 mb-4 d-sm-block d-flex justify-content-center" key={country.name.common}>
                 <Card
                   countryID={country.cca2}
                   darkMode={props.darkMode}

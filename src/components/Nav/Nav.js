@@ -5,16 +5,12 @@ import "../../global.css";
 export default function Nav(props) {
   return (
     <>
-      <nav
-        className={`${
-          props.darkMode && styles.dark
-        } navbar p-3 shadow-sm pr-5 pl-5`}
-      >
-        <div className="container">
-          <span className="navbar-brand mb-0 h1">
+      <nav className={`${props.darkMode && styles.dark} navbar shadow-sm `}>
+        <div className="container p-2">
+          <span className="float-left">
             <b>Where in the world?</b>
           </span>
-          <button onClick={props.toggleDarkMode}>
+          <button className="float-right" onClick={props.toggleDarkMode}>
             <i className="bi bi-moon"></i> Dark Mode
           </button>
         </div>

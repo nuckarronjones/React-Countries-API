@@ -12,3 +12,9 @@
     height:100%;
     max-width: 300px !important;
 }
+
+@media (max-width:573px)  { 
+    .cardContainer{
+        min-width:300px;
+    }
+ }
